@@ -19,12 +19,12 @@
 package org.apache.flink.connector.hbase.sink;
 
 import org.apache.flink.annotation.Internal;
-import org.apache.flink.api.common.functions.OpenContext;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.connector.hbase.util.HBaseConfigurationUtil;
 import org.apache.flink.runtime.state.FunctionInitializationContext;
 import org.apache.flink.runtime.state.FunctionSnapshotContext;
 import org.apache.flink.streaming.api.checkpoint.CheckpointedFunction;
-import org.apache.flink.streaming.api.functions.sink.legacy.RichSinkFunction;
+import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 import org.apache.flink.util.StringUtils;
 import org.apache.flink.util.concurrent.ExecutorThreadFactory;
 
@@ -110,7 +110,7 @@ public class HBaseSinkFunction<T> extends RichSinkFunction<T>
     }
 
     @Override
-    public void open(OpenContext openContext) throws Exception {
+    public void open(Configuration parameters) throws Exception {
         LOG.info("start open ...");
         org.apache.hadoop.conf.Configuration config = prepareRuntimeConfiguration();
         try {
@@ -288,7 +288,7 @@ public class HBaseSinkFunction<T> extends RichSinkFunction<T>
         synchronized void mutate(Mutation current) {
             ByteBuffer key = ByteBuffer.wrap(current.getRow());
             Mutation old = mutations.get(key);
-            if (old == null || current.getTimestamp() >= old.getTimestamp()) {
+            if (old == null || current.getTimeStamp() >= old.getTimeStamp()) {
                 mutations.put(key, current);
             }
         }

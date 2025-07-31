@@ -118,7 +118,7 @@ public class HBaseTestingClusterAutoStarter {
     }
 
     public static String getZookeeperQuorum() {
-        return "localhost:" + TEST_UTIL.getZkCluster().getClientPort();
+        return "127.0.0.1:" + TEST_UTIL.getZkCluster().getClientPort();
     }
 
     private static void initialize(Configuration c) {
@@ -139,12 +139,13 @@ public class HBaseTestingClusterAutoStarter {
     @BeforeAll
     public static void setUp() throws Exception {
         // HBase 2.2.3 HBaseTestingUtility works with only a certain range of hadoop versions
-        String hadoopVersion = System.getProperty("hadoop.version", "2.8.5");
+        String hadoopVersion = System.getProperty("hadoop.version", "2.10.2");
         assumeThat(HADOOP_VERSION_RANGE.contains(hadoopVersion)).isTrue();
-        TEST_UTIL.startMiniCluster(1);
 
         // https://issues.apache.org/jira/browse/HBASE-11711
         TEST_UTIL.getConfiguration().setInt("hbase.master.info.port", -1);
+
+        TEST_UTIL.startMiniCluster(1);
 
         // Make sure the zookeeper quorum value contains the right port number (varies per run).
         LOG.info("Hbase minicluster client port: " + TEST_UTIL.getZkCluster().getClientPort());
@@ -152,7 +153,7 @@ public class HBaseTestingClusterAutoStarter {
                 .getConfiguration()
                 .set(
                         "hbase.zookeeper.quorum",
-                        "localhost:" + TEST_UTIL.getZkCluster().getClientPort());
+                        "127.0.0.1:" + TEST_UTIL.getZkCluster().getClientPort());
 
         initialize(TEST_UTIL.getConfiguration());
     }

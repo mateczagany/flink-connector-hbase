@@ -18,10 +18,10 @@
 
 package org.apache.flink.connector.hbase2;
 
-import org.apache.flink.api.common.functions.DefaultOpenContext;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.typeutils.RowTypeInfo;
+import org.apache.flink.configuration.Configuration;
 import org.apache.flink.connector.hbase.sink.HBaseSinkFunction;
 import org.apache.flink.connector.hbase.sink.RowDataToMutationConverter;
 import org.apache.flink.connector.hbase.util.HBaseConfigurationUtil;
@@ -658,7 +658,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         1000,
                         1000);
 
-        assertThatThrownBy(() -> sinkFunction.open(DefaultOpenContext.INSTANCE))
+        assertThatThrownBy(() -> sinkFunction.open(new Configuration()))
                 .getRootCause()
                 .isExactlyInstanceOf(TableNotFoundException.class);
 
