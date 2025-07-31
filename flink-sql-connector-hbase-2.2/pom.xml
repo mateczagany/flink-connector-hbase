@@ -74,7 +74,9 @@ under the License.
 									<include>org.apache.flink:flink-connector-hbase-2.2</include>
 									<include>org.apache.hbase:hbase-*</include>
 									<include>org.apache.hbase.thirdparty:hbase-shaded-*</include>
+									<include>org.apache.hbase.thirdparty:hbase-unsafe</include>
 									<include>org.apache.zookeeper:zookeeper</include>
+									<include>org.apache.zookeeper:zookeeper-jute</include>
 									<include>org.apache.htrace:htrace-core4</include>
 									<include>com.google.protobuf:protobuf-java</include>
 									<include>commons-codec:commons-codec</include>
@@ -139,13 +141,19 @@ under the License.
 								<relocation>
 									<pattern>org.apache.hadoop.hbase</pattern>
 									<shadedPattern>org.apache.flink.hbase.shaded.org.apache.hadoop.hbase</shadedPattern>
+									<excludes>
 									<!-- HBase client uses shaded KeyValueCodec to encode data and put the class name in
- 										the header of request, the HBase region server can not load the shaded
+										 the header of request, the HBase region server can not load the shaded
 										KeyValueCodec class when decode the data, so we exclude them here.
 										Some exceptions also required to keep their original package because the region
 										server sends it that way, and otherwise the client will not recognize it.-->
-									<excludes>
 										<exclude>org.apache.hadoop.hbase.codec.*</exclude>
+
+									<!-- CellScanner and Cell are also required to be excluded here as they are the
+										interfaces of KeyValueCodec that the HBase client expects. -->
+										<exclude>org.apache.hadoop.hbase.CellScanner</exclude>
+
+										<exclude>org.apache.hadoop.hbase.Cell</exclude>
 										<exclude>org.apache.hadoop.hbase.NotServingRegionException</exclude>
 										<exclude>org.apache.hadoop.hbase.exceptions.RegionMovedException</exclude>
 									</excludes>
