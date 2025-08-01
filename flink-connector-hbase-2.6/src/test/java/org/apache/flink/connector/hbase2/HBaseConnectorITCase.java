@@ -697,12 +697,13 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " ) AS t (user_id);");
 
         tEnv.executeSql(
-                "INSERT INTO hTableForSink SELECT "
-                        + "    user_id as rowkey,"
-                        + "    ROW(CAST(family1.col1 + 1 AS INT))"
-                        + " FROM user_click INNER JOIN hTableForSink"
-                        + " FOR SYSTEM_TIME AS OF user_click.proc_time"
-                        + " ON hTableForSink.rowkey = user_click.user_id;");
+                        "INSERT INTO hTableForSink SELECT "
+                                + "    user_id as rowkey,"
+                                + "    ROW(CAST(family1.col1 + 1 AS INT))"
+                                + " FROM user_click INNER JOIN hTableForSink"
+                                + " FOR SYSTEM_TIME AS OF user_click.proc_time"
+                                + " ON hTableForSink.rowkey = user_click.user_id;")
+                .await();
 
         tEnv.executeSql(
                 "CREATE TABLE hTableForQuery ("
