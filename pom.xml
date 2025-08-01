@@ -81,6 +81,15 @@ under the License.
 		<slf4j.version>1.7.36</slf4j.version>
 		<log4j.version>2.17.2</log4j.version>
 
+		<flink.connector.module.config>
+			--add-opens=java.base/java.util=ALL-UNNAMED
+			--add-opens=java.base/java.lang=ALL-UNNAMED
+			--add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+		</flink.connector.module.config>
+		<flink.surefire.baseArgLine>-XX:+UseG1GC -Xms256m -XX:+IgnoreUnrecognizedVMOptions
+			${flink.connector.module.config}
+		</flink.surefire.baseArgLine>
+
 		<!-- For directory plugin -->
 		<flink.parent.artifactId>flink-connector-hbase-parent</flink.parent.artifactId>
 	</properties>
@@ -609,27 +618,4 @@ under the License.
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>java9</id>
-			<activation>
-				<jdk>[9,)</jdk>
-			</activation>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<configuration>
-							<!-- Without this we would have failures from flink-test-utils-junit -->
-							<argLine>--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
-							</argLine>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
