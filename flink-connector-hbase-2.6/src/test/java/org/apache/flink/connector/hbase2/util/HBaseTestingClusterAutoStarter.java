@@ -68,7 +68,7 @@ public class HBaseTestingClusterAutoStarter {
     private static final Range<String> HADOOP_VERSION_RANGE =
             Range.between("2.8.0", "3.0.3", VersionUtil::compareVersions);
 
-    private static final HBaseTestingUtility TEST_UTIL = new HBaseTestingUtility();
+    private static HBaseTestingUtility hbaseTestingUtility;
     private static Admin admin = null;
     private static List<TableName> createdTables = new ArrayList<>();
 
@@ -93,7 +93,7 @@ public class HBaseTestingClusterAutoStarter {
     }
 
     protected static Table openTable(TableName tableName) throws IOException {
-        Table table = TEST_UTIL.getConnection().getTable(tableName);
+        Table table = hbaseTestingUtility.getConnection().getTable(tableName);
         assertThat(admin.tableExists(tableName)).as("Fail to create the table").isTrue();
         return table;
     }
@@ -118,7 +118,7 @@ public class HBaseTestingClusterAutoStarter {
     }
 
     public static String getZookeeperQuorum() {
-        return "127.0.0.1:" + TEST_UTIL.getZkCluster().getClientPort();
+        return "127.0.0.1:" + hbaseTestingUtility.getZkCluster().getClientPort();
     }
 
     private static void initialize(Configuration c) {
@@ -126,7 +126,7 @@ public class HBaseTestingClusterAutoStarter {
         // the default retry number is 15 in hbase-2.6, set 15 for test
         conf.setInt(HConstants.HBASE_CLIENT_RETRIES_NUMBER, 15);
         try {
-            admin = TEST_UTIL.getAdmin();
+            admin = hbaseTestingUtility.getAdmin();
         } catch (MasterNotRunningException e) {
             fail("Master is not running", e);
         } catch (ZooKeeperConnectionException e) {
@@ -138,24 +138,28 @@ public class HBaseTestingClusterAutoStarter {
 
     @BeforeAll
     public static void setUp() throws Exception {
+        hbaseTestingUtility = new HBaseTestingUtility();
+
         // HBase 2.2.3 HBaseTestingUtility works with only a certain range of hadoop versions
         String hadoopVersion = System.getProperty("hadoop.version", "2.10.2");
         assumeThat(HADOOP_VERSION_RANGE.contains(hadoopVersion)).isTrue();
 
         // https://issues.apache.org/jira/browse/HBASE-11711
-        TEST_UTIL.getConfiguration().setInt("hbase.master.info.port", -1);
+        hbaseTestingUtility.getConfiguration().setInt("hbase.master.info.port", -1);
 
-        TEST_UTIL.startMiniCluster(1);
+        hbaseTestingUtility.startMiniCluster(1);
 
         // Make sure the zookeeper quorum value contains the right port number (varies per run).
-        LOG.info("Hbase minicluster client port: " + TEST_UTIL.getZkCluster().getClientPort());
-        TEST_UTIL
+        LOG.info(
+                "Hbase minicluster client port: "
+                        + hbaseTestingUtility.getZkCluster().getClientPort());
+        hbaseTestingUtility
                 .getConfiguration()
                 .set(
                         "hbase.zookeeper.quorum",
-                        "127.0.0.1:" + TEST_UTIL.getZkCluster().getClientPort());
+                        "127.0.0.1:" + hbaseTestingUtility.getZkCluster().getClientPort());
 
-        initialize(TEST_UTIL.getConfiguration());
+        initialize(hbaseTestingUtility.getConfiguration());
     }
 
     @AfterAll
@@ -166,7 +170,7 @@ public class HBaseTestingClusterAutoStarter {
         }
         LOG.info("HBase minicluster: Shutting down");
         deleteTables();
-        TEST_UTIL.shutdownMiniCluster();
+        hbaseTestingUtility.shutdownMiniCluster();
         LOG.info("HBase minicluster: Down");
     }
 }
