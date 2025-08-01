@@ -95,6 +95,10 @@ under the License.
 					<artifactId>servlet-api</artifactId>
 					<groupId>javax.servlet</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>logback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
