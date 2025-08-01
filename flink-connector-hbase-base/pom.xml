@@ -214,6 +214,8 @@ under the License.
 						<configuration>
 							<!-- hbase currently does not support Java 11, see HBASE-21110 -->
 							<skip>true</skip>
+							<!-- Without this we would have failures from flink-test-utils-junit -->
+							<argLine>--add-opens=java.base/java.util=ALL-UNNAMED</argLine>
 						</configuration>
 					</plugin>
 				</plugins>
