@@ -15,11 +15,15 @@ This project bundles the following dependencies under the Apache Software Licens
  - org.apache.hbase:hbase-protocol:2.6.3
  - org.apache.hbase:hbase-protocol-shaded:2.6.3
  - org.apache.hbase:hbase-logging:2.6.3
+ - org.apache.hbase.thirdparty:hbase-unsafe:4.1.11
  - org.apache.hbase.thirdparty:hbase-shaded-protobuf:4.1.11
  - org.apache.hbase.thirdparty:hbase-shaded-miscellaneous:4.1.11
  - org.apache.hbase.thirdparty:hbase-shaded-netty:4.1.11
  - org.apache.hbase.thirdparty:hbase-shaded-gson:4.1.11
- - org.apache.hbase.thirdparty:hbase-shaded-unsafe:4.1.11
- - org.apache.htrace:htrace-core4:4.2.0-incubating
  - org.apache.zookeeper:zookeeper:3.8.4
  - org.apache.zookeeper:zookeeper-jute:3.8.4
+
+The bundled Apache HBase Patched & Relocated (Shaded) Protobuf org.apache.hbase.thirdparty:hbase-shaded-protobuf
+dependency bundles the following dependencies under the BSD license. See bundled license files for details.
+
+ - com.google.protobuf:protobuf-java:2.5.0
