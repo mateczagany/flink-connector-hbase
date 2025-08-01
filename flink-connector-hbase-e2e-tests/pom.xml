@@ -130,7 +130,7 @@ under the License.
 						</goals>
 						<configuration>
 							<outputFile>${project.build.directory}/hadoop.classpath</outputFile>
-							<excludeGroupIds>org.apache.flink,org.apache.hbase,org.apache.zookeeper</excludeGroupIds>
+							<excludeGroupIds>org.apache.flink,org.apache.hbase,org.apache.zookeeper,io.netty</excludeGroupIds>
 							<includeScope>test</includeScope>
 						</configuration>
 					</execution>

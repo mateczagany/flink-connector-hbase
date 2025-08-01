@@ -73,7 +73,6 @@ under the License.
 		<junit5.version>5.8.1</junit5.version>
 		<kryo.verison>2.24.0</kryo.verison>
 		<minikdc.version>3.2.4</minikdc.version>
-		<netty.version>4.1.70.Final</netty.version>
 		<zookeeper.version>3.8.4</zookeeper.version>
 
 		<slf4j.version>1.7.36</slf4j.version>
@@ -385,12 +384,6 @@ under the License.
 				<groupId>org.scala-lang</groupId>
 				<artifactId>scala-library</artifactId>
 				<version>${scala.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-all</artifactId>
-				<version>${netty.version}</version>
 			</dependency>
 
 			<dependency>

@@ -82,7 +82,6 @@ under the License.
 									<include>commons-codec:commons-codec</include>
 									<include>org.apache.commons:commons-crypto</include>
 									<include>org.apache.commons:commons-lang3</include>
-									<include>io.netty:*</include>
 									<include>io.dropwizard.metrics:metrics-core</include>
 								</includes>
 								<excludes>
@@ -133,10 +132,6 @@ under the License.
 								<relocation>
 									<pattern>org.apache.jute</pattern>
 									<shadedPattern>org.apache.flink.hbase.shaded.org.apache.jute</shadedPattern>
-								</relocation>
-								<relocation>
-									<pattern>io.netty</pattern>
-									<shadedPattern>org.apache.flink.hbase.shaded.io.netty</shadedPattern>
 								</relocation>
 								<relocation>
 									<pattern>org.apache.hadoop.hbase</pattern>
