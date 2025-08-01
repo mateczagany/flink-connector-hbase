@@ -96,7 +96,7 @@ under the License.
 									<excludes>
 										<!-- excluded all these files for a clean jar -->
 										<exclude>META-INF/services/com.fasterxml.**</exclude>
-										<exclude>META-INF/services/org.apache.hadoop.**</exclude>
+										<exclude>META-INF/services/org.apache.hadoop.security.**</exclude>
 										<exclude>META-INF/services/javax.**</exclude>
 										<exclude>digesterRules.xml</exclude>
 										<exclude>properties.dtd</exclude>

@@ -2067,8 +2067,4 @@ possible configurations would overwhelm and obscure the important.
 			hitting the namenode, if the DFSInputStream's block list is incomplete.
 		</description>
 	</property>
-	<property>
-		<name>hbase.client.sasl.provider.extras</name>
-		<value>org.apache.flink.hbase.shaded.org.apache.hadoop.hbase.security.provider.SimpleSaslClientAuthenticationProvider,org.apache.flink.hbase.shaded.org.apache.hadoop.hbase.security.provider.GssSaslClientAuthenticationProvider,org.apache.flink.hbase.shaded.org.apache.hadoop.hbase.security.provider.DigestSaslClientAuthenticationProvider</value>
-	</property>
 </configuration>
