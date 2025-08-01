@@ -61,7 +61,7 @@ public class HBaseTablePlanTest extends TableTestBase {
                                 + " rowkey INT,"
                                 + " rowkey2 STRING "
                                 + ") WITH ("
-                                + " 'connector' = 'hbase-2.2',"
+                                + " 'connector' = 'hbase-2.6',"
                                 + " 'table-name' = 'my_table',"
                                 + " 'zookeeper.quorum' = 'localhost:2021'"
                                 + ")");
@@ -79,7 +79,7 @@ public class HBaseTablePlanTest extends TableTestBase {
                                 + " family1 ROW<col1 INT>,"
                                 + " family2 ROW<col1 STRING, col2 BIGINT>"
                                 + ") WITH ("
-                                + " 'connector' = 'hbase-2.2',"
+                                + " 'connector' = 'hbase-2.6',"
                                 + " 'table-name' = 'my_table',"
                                 + " 'zookeeper.quorum' = 'localhost:2021'"
                                 + ")");
@@ -102,7 +102,7 @@ public class HBaseTablePlanTest extends TableTestBase {
                                 + " rowkey STRING, "
                                 + " PRIMARY KEY (family1) NOT ENFORCED "
                                 + ") WITH ("
-                                + " 'connector' = 'hbase-2.2',"
+                                + " 'connector' = 'hbase-2.6',"
                                 + " 'table-name' = 'my_table',"
                                 + " 'zookeeper.quorum' = 'localhost:2021'"
                                 + ")");
@@ -126,7 +126,7 @@ public class HBaseTablePlanTest extends TableTestBase {
                                 + " rowkey STRING, "
                                 + " PRIMARY KEY (rowkey) NOT ENFORCED "
                                 + ") WITH ("
-                                + " 'connector' = 'hbase-2.2',"
+                                + " 'connector' = 'hbase-2.6',"
                                 + " 'table-name' = 'my_table',"
                                 + " 'zookeeper.quorum' = 'localhost:2021'"
                                 + ")");
@@ -147,7 +147,7 @@ public class HBaseTablePlanTest extends TableTestBase {
                                 + " rowkey INT,"
                                 + " PRIMARY KEY (rowkey) NOT ENFORCED"
                                 + ") WITH ("
-                                + " 'connector' = 'hbase-2.2',"
+                                + " 'connector' = 'hbase-2.6',"
                                 + " 'table-name' = 'my_table',"
                                 + " 'zookeeper.quorum' = 'localhost:2021'"
                                 + ")");

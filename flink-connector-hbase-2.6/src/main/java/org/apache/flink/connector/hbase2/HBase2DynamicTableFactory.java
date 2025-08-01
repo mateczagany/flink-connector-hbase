@@ -66,7 +66,7 @@ import static org.apache.flink.table.factories.FactoryUtil.createTableFactoryHel
 public class HBase2DynamicTableFactory
         implements DynamicTableSourceFactory, DynamicTableSinkFactory {
 
-    private static final String IDENTIFIER = "hbase-2.2";
+    private static final String IDENTIFIER = "hbase-2.6";
 
     @Override
     public DynamicTableSource createDynamicTableSource(Context context) {

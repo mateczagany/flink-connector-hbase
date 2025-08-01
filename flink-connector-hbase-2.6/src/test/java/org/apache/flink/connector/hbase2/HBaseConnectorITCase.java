@@ -86,7 +86,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT,"
                         + " PRIMARY KEY (rowkey) NOT ENFORCED"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_1
                         + "',"
@@ -130,7 +130,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT,"
                         + " PRIMARY KEY (rowkey) NOT ENFORCED"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_EMPTY_TABLE
                         + "',"
@@ -157,7 +157,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT,"
                         + " PRIMARY KEY (rowkey) NOT ENFORCED"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_1
                         + "',"
@@ -200,7 +200,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " family3 ROW<col1 DOUBLE, col2 BOOLEAN, col3 STRING>,"
                         + " family1 ROW<col1 INT>"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_1
                         + "',"
@@ -235,7 +235,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT"
                         + // no primary key syntax
                         ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_1
                         + "',"
@@ -374,7 +374,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " family1 ROW<name STRING>,"
                         + " PRIMARY KEY (rowkey) NOT ENFORCED"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_4
                         + "',"
@@ -402,7 +402,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " family1 ROW<col1 INT>,"
                         + " version TIMESTAMP_LTZ(3) NOT NULL METADATA FROM 'timestamp'"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_5
                         + "',"
@@ -425,7 +425,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT PRIMARY KEY NOT ENFORCED,"
                         + " family1 ROW<col1 INT>"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_5
                         + "',"
@@ -452,7 +452,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " family1 ROW<col1 INT>,"
                         + " ttl BIGINT NOT NULL METADATA FROM 'ttl'"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_6
                         + "',"
@@ -473,7 +473,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT PRIMARY KEY NOT ENFORCED,"
                         + " family1 ROW<col1 INT>"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_6
                         + "',"
@@ -675,7 +675,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT PRIMARY KEY NOT ENFORCED,"
                         + " family1 ROW<col1 INT>"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'sink.buffer-flush.max-size' = '0',"
                         + " 'sink.buffer-flush.max-rows' = '0',"
                         + " 'table-name' = '"
@@ -709,7 +709,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " rowkey INT PRIMARY KEY NOT ENFORCED,"
                         + " family1 ROW<col1 INT>"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'table-name' = '"
                         + TEST_TABLE_7
                         + "',"
@@ -752,7 +752,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                         + " family4 ROW<col1 TIMESTAMP(3), col2 DATE, col3 TIME(3), col4 DECIMAL(12, 4)>,"
                         + " PRIMARY KEY (rowkey) NOT ENFORCED"
                         + ") WITH ("
-                        + " 'connector' = 'hbase-2.2',"
+                        + " 'connector' = 'hbase-2.6',"
                         + " 'lookup.async' = '"
                         + async
                         + "',"
@@ -876,7 +876,7 @@ class HBaseConnectorITCase extends HBaseTestBase {
                 + "   family3 ROW<col1 DOUBLE, col2 BOOLEAN, col3 VARCHAR>"
                 + family4Statement.toString()
                 + ") WITH (\n"
-                + "   'connector' = 'hbase-2.2',\n"
+                + "   'connector' = 'hbase-2.6',\n"
                 + "   'table-name' = '"
                 + tableName
                 + "',\n"

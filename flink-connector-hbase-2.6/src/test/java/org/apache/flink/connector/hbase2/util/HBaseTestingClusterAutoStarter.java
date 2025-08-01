@@ -123,7 +123,7 @@ public class HBaseTestingClusterAutoStarter {
 
     private static void initialize(Configuration c) {
         conf = HBaseConfiguration.create(c);
-        // the default retry number is 15 in hbase-2.2, set 15 for test
+        // the default retry number is 15 in hbase-2.6, set 15 for test
         conf.setInt(HConstants.HBASE_CLIENT_RETRIES_NUMBER, 15);
         try {
             admin = TEST_UTIL.getAdmin();

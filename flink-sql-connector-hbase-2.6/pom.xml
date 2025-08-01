@@ -29,15 +29,15 @@ under the License.
 		<version>4.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>flink-sql-connector-hbase-2.2</artifactId>
-	<name>Flink : Connectors : SQL : HBase 2.2</name>
+	<artifactId>flink-sql-connector-hbase-2.6</artifactId>
+	<name>Flink : Connectors : SQL : HBase 2.6</name>
 
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-connector-hbase-2.2</artifactId>
+			<artifactId>flink-connector-hbase-2.6</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
@@ -56,7 +56,7 @@ under the License.
 						</goals>
 						<configuration>
 							<!--
-							Make the file hbase-default.xml under flink-sql-connector-hbase-2.2/src/main/resources as the
+							Make the file hbase-default.xml under flink-sql-connector-hbase-2.6/src/main/resources as the
 							hbase-default.xml in the shaded target jar here, because we don't want to check the hbase
 							version at client side. Also we don't need the extra default configs keys.
 							-->
@@ -71,7 +71,7 @@ under the License.
 								<includes>
 									<include>org.apache.flink:flink-connector-base</include>
 									<include>org.apache.flink:flink-connector-hbase-base</include>
-									<include>org.apache.flink:flink-connector-hbase-2.2</include>
+									<include>org.apache.flink:flink-connector-hbase-2.6</include>
 									<include>org.apache.hbase:hbase-*</include>
 									<include>org.apache.hbase.thirdparty:hbase-shaded-*</include>
 									<include>org.apache.hbase.thirdparty:hbase-unsafe</include>

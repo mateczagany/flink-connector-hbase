@@ -84,8 +84,8 @@ under the License.
 
 	<modules>
 		<module>flink-connector-hbase-base</module>
-		<module>flink-connector-hbase-2.2</module>
-		<module>flink-sql-connector-hbase-2.2</module>
+		<module>flink-connector-hbase-2.6</module>
+		<module>flink-sql-connector-hbase-2.6</module>
 		<module>flink-connector-hbase-e2e-tests</module>
 	</modules>
 

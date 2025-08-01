@@ -59,7 +59,7 @@ under the License.
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-connector-hbase-2.2</artifactId>
+			<artifactId>flink-connector-hbase-2.6</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -113,9 +113,9 @@ under the License.
 							<artifactItems>
 								<artifactItem>
 									<groupId>org.apache.flink</groupId>
-									<artifactId>flink-sql-connector-hbase-2.2</artifactId>
+									<artifactId>flink-sql-connector-hbase-2.6</artifactId>
 									<version>${project.version}</version>
-									<destFileName>sql-hbase-2.2.jar</destFileName>
+									<destFileName>sql-hbase-2.6.jar</destFileName>
 									<type>jar</type>
 									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 								</artifactItem>
