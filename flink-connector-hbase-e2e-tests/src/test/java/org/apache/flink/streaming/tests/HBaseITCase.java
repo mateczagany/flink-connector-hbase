@@ -19,6 +19,7 @@
 package org.apache.flink.streaming.tests;
 
 import org.apache.flink.connector.testframe.container.FlinkContainers;
+import org.apache.flink.connector.testframe.container.FlinkContainersSettings;
 import org.apache.flink.connector.testframe.container.TestcontainersSettings;
 import org.apache.flink.test.resources.ResourceTestUtils;
 import org.apache.flink.test.util.SQLJobSubmission;
@@ -38,10 +39,13 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.flink.configuration.CheckpointingOptions.CHECKPOINTING_INTERVAL;
+import static org.apache.flink.configuration.TaskManagerOptions.NUM_TASK_SLOTS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testcontainers.shaded.org.hamcrest.MatcherAssert.assertThat;
 import static org.testcontainers.shaded.org.hamcrest.Matchers.allOf;
@@ -56,6 +60,12 @@ class HBaseITCase {
     private static final String HBASE_E2E_SQL = "hbase_e2e.sql";
     private static final Path HADOOP_CP = ResourceTestUtils.getResource(".*hadoop.classpath");
     private static final Network NETWORK = Network.newNetwork();
+    private static final FlinkContainersSettings FLINK_CONTAINERS_SETTINGS =
+            FlinkContainersSettings.builder()
+                    .numTaskManagers(2)
+                    .setConfigOption(CHECKPOINTING_INTERVAL, Duration.ofSeconds(1))
+                    .setConfigOption(NUM_TASK_SLOTS, 2)
+                    .build();
 
     private HBaseContainer hbase;
     private FlinkContainers flink;
@@ -97,6 +107,7 @@ class HBaseITCase {
                                         .network(NETWORK)
                                         .dependsOn(hbase)
                                         .build())
+                        .withFlinkContainersSettings(FLINK_CONTAINERS_SETTINGS)
                         .build();
 
         connectorJar = ResourceTestUtils.getResource("sql-" + CONNECTOR_VERSION + ".jar");

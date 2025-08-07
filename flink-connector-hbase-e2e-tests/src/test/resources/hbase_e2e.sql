@@ -32,8 +32,9 @@ CREATE TABLE MyHBaseSink (
   'connector' = '$HBASE_CONNECTOR',
   'table-name' = 'sink',
   'zookeeper.quorum' = 'hbase:2181',
-  'sink.buffer-flush.max-rows' = '1',
-  'sink.buffer-flush.interval' = '2s'
+  'sink.batch.max-size' = '1',
+  'sink.flush-buffer.timeout' = '2000',
+  'sink.parallelism' = '2'
 );
 
 INSERT INTO MyHBaseSink
